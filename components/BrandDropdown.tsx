@@ -6,22 +6,23 @@ import gsap from "gsap";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { services } from "@/data/services";
+import { iconMap } from "@/components/icon-map";
+import { services, type IconName } from "@/data/services";
 
 type CategoryItem = {
   label: string;
-  mark: string;
+  icon: IconName;
   href: string;
 };
 
 const categoryItems: CategoryItem[] = [
   ...services.map((service) => ({
     label: service.title,
-    mark: service.mark,
+    icon: service.icon,
     href: `/services#${service.slug}`,
   })),
-  { label: "Book a Service Visit", mark: "BK", href: "/contact" },
-  { label: "Call or WhatsApp Support", mark: "WA", href: "/contact" },
+  { label: "Book a Service Visit", icon: "calendarCheck", href: "/contact" },
+  { label: "Call or WhatsApp Support", icon: "message", href: "/contact" },
 ];
 
 export default function BrandDropdown() {
@@ -197,25 +198,29 @@ export default function BrandDropdown() {
           open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
-        {categoryItems.map(({ href, label, mark }) => (
-          <Link
-            href={href}
-            role="menuitem"
-            className="flex min-h-12 items-center gap-4 px-4 text-base font-medium text-[#5f6874]! outline-none transition-colors hover:bg-black/5 hover:text-brand-navy! focus:bg-white focus:text-brand-navy!"
-            key={label}
-            onClick={() => setOpen(false)}
-          >
-            <span className="grid size-9 shrink-0 place-items-center text-brand-navy">
+        {categoryItems.map(({ href, icon, label }) => {
+          const Icon = iconMap[icon];
+
+          return (
+            <Link
+              href={href}
+              role="menuitem"
+              className="flex min-h-12 items-center gap-4 px-4 text-base font-medium text-[#5f6874]! outline-none transition-colors hover:bg-black/5 hover:text-brand-navy! focus:bg-white focus:text-brand-navy!"
+              key={label}
+              onClick={() => setOpen(false)}
+            >
               <span
-                className="grid size-7 place-items-center rounded border border-brand-navy text-[10px] font-extrabold leading-none tracking-normal text-brand-navy"
+                className="grid size-9 shrink-0 place-items-center text-brand-navy"
                 aria-hidden="true"
               >
-                {mark}
+                <span className="grid size-7 place-items-center rounded border border-brand-navy text-brand-navy">
+                  <Icon className="size-4" />
+                </span>
               </span>
-            </span>
-            <span className="min-w-0 truncate">{label}</span>
-          </Link>
-        ))}
+              <span className="min-w-0 truncate">{label}</span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

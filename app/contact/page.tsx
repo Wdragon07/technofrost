@@ -5,12 +5,13 @@ import CTAButton from "@/components/CTAButton";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { seoKeywords, site } from "@/data/site";
-import { MessageCircle, Navigation, Phone } from "lucide-react";
+import { Navigation, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact TECHNOFROST in Main Street, Kurakkanhena, Kalpitiya for A/C service, refrigerator repair, freezer repair, washing machine repair, auto A/C, and spare parts.",
+    "Contact TECHNOFROST at 6PCX+GQG, Kurakkanhena, Main Street, Kalpitiya 61354 for A/C service, refrigerator repair, freezer repair, washing machine repair, auto A/C, and spare parts.",
   keywords: seoKeywords,
   openGraph: {
     title: "Contact TECHNOFROST",
@@ -53,6 +54,8 @@ export default function ContactPage() {
               description={<span>Send issue details, photos, and location for quick coordination.</span>}
               actionLabel="WhatsApp"
               actionHref={site.whatsappHref}
+              actionIcon={<FaWhatsapp className="size-4" />}
+              actionVariant="whatsapp"
               external
             />
             <ContactCard
@@ -99,9 +102,9 @@ export default function ContactPage() {
               </CTAButton>
               <CTAButton
                 href={site.whatsappHref}
-                variant="white"
+                variant="whatsapp"
                 external
-                icon={<MessageCircle className="size-4" />}
+                icon={<FaWhatsapp className="size-4" />}
               >
                 WhatsApp
               </CTAButton>
@@ -122,34 +125,20 @@ export default function ContactPage() {
         <div className="mx-auto grid w-full max-w-420 gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-stretch">
           <div>
             <p className="text-sm font-black uppercase tracking-normal text-brand-blue">Map</p>
-            <h2 className="mt-3 text-3xl font-black text-brand-title">Main Street, Kurakkanhena, Kalpitiya</h2>
+            <h2 className="mt-3 text-3xl font-black text-brand-title">{site.address}</h2>
             <p className="mt-4 text-base leading-8 text-slate-600">
-              A styled map placeholder is used here so the exact Google listing can be embedded
-              later without changing the page layout.
+              Use the pinned map to find the TECHNOFROST store location on Main Street in
+              Kurakkanhena, Kalpitiya.
             </p>
           </div>
-          <div className="relative min-h-96 overflow-hidden rounded-md bg-brand-light p-6 shadow-inner">
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,127,193,0.08)_1px,transparent_1px),linear-gradient(180deg,rgba(12,127,193,0.08)_1px,transparent_1px)] [background-size:32px_32px]" />
-            <div className="relative flex h-full min-h-80 flex-col justify-between rounded-md bg-white/90 p-6 shadow-[0_16px_50px_rgba(4,20,43,0.08)]">
-              <div>
-                <p className="text-sm font-black uppercase tracking-normal text-brand-blue">
-                  Google Map placeholder
-                </p>
-                <h3 className="mt-3 text-2xl font-black text-brand-title">{site.address}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Replace this area with an iframe embed once the final map URL is confirmed.
-                </p>
-              </div>
-              <CTAButton
-                href={site.directionsHref}
-                variant="navy"
-                external
-                icon={<Navigation className="size-4" />}
-                className="mt-8 w-full sm:w-max"
-              >
-                Open Google Maps
-              </CTAButton>
-            </div>
+          <div className="relative min-h-96 overflow-hidden rounded-md bg-brand-navy p-2 shadow-[0_24px_80px_rgba(4,20,43,0.18)]">
+            <iframe
+              src={site.mapEmbedHref}
+              title={`Google map showing ${site.address}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="min-h-96 w-full rounded-md border-0"
+            />
           </div>
         </div>
       </section>

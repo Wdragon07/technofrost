@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { IconName } from "@/data/services";
 import { iconMap } from "@/components/icon-map";
 import CTAButton from "@/components/CTAButton";
+import type { CTAButtonVariant } from "@/components/CTAButton";
 import { cn } from "@/lib/utils";
 
 type ContactCardProps = {
@@ -10,6 +11,8 @@ type ContactCardProps = {
   icon: IconName;
   actionLabel?: string;
   actionHref?: string;
+  actionIcon?: ReactNode;
+  actionVariant?: CTAButtonVariant;
   external?: boolean;
   className?: string;
 };
@@ -20,6 +23,8 @@ export default function ContactCard({
   icon,
   actionLabel,
   actionHref,
+  actionIcon,
+  actionVariant,
   external,
   className,
 }: ContactCardProps) {
@@ -32,7 +37,12 @@ export default function ContactCard({
         className,
       )}
     >
-      <div className="mb-5 grid size-12 place-items-center rounded-md bg-brand-navy text-brand-ice">
+      <div
+        className={cn(
+          "mb-5 grid size-12 place-items-center rounded-md",
+          actionVariant === "whatsapp" ? "bg-brand-whatsapp text-white" : "bg-brand-navy text-brand-ice",
+        )}
+      >
         <Icon className="size-6" aria-hidden="true" />
       </div>
       <h3 className="text-xl font-black text-brand-title">{title}</h3>
@@ -40,8 +50,9 @@ export default function ContactCard({
       {actionLabel && actionHref ? (
         <CTAButton
           href={actionHref}
-          variant="outline"
+          variant={actionVariant ?? "outline"}
           external={external}
+          icon={actionIcon}
           className="mt-5 w-full"
         >
           {actionLabel}

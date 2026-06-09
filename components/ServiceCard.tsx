@@ -25,7 +25,7 @@ export default function ServiceCard({ service, compact, className }: ServiceCard
         <div className="relative aspect-[2.18] overflow-hidden rounded-t-md bg-brand-light">
           <Image
             src={imageSrc}
-            alt={`${service.title} placeholder`}
+            alt={`${service.title} service image`}
             fill
             sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 24vw"
             className="object-cover transition duration-500 group-hover:scale-[1.04]"

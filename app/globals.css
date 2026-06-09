@@ -26,6 +26,8 @@
   --color-brand-red-dark: #c90820;
   --color-brand-red-soft: #ff4a5d;
   --color-brand-purple: #7d1b82;
+  --color-brand-whatsapp: #25d366;
+  --color-brand-whatsapp-dark: #128c7e;
   --font-sans: var(--font-sans);
   --font-bonny: var(--font-bonny);
   --font-bebas-neue: var(--font-bebas-neue);
@@ -84,6 +86,8 @@ a {
 }
 
 :root {
+  --brand-whatsapp: #25d366;
+  --brand-whatsapp-dark: #128c7e;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -181,5 +185,37 @@ a {
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .bg-brand-whatsapp {
+    background-color: var(--brand-whatsapp);
+    color: #fff;
+  }
+
+  .bg-brand-whatsapp * {
+    color: #fff;
+  }
+
+  .text-brand-whatsapp {
+    color: var(--brand-whatsapp);
+  }
+
+  .hover\:bg-brand-whatsapp-dark:hover {
+    background-color: var(--brand-whatsapp-dark);
+  }
+
+  .before\:bg-brand-whatsapp-dark::before {
+    content: var(--tw-content);
+    background-color: var(--brand-whatsapp-dark);
+  }
+
+  .shadow-brand-whatsapp\/20 {
+    --tw-shadow-color: color-mix(in srgb, var(--brand-whatsapp) 20%, transparent);
+  }
+
+  .shadow-brand-whatsapp\/25 {
+    --tw-shadow-color: color-mix(in srgb, var(--brand-whatsapp) 25%, transparent);
   }
 }

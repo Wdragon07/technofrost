@@ -6,7 +6,8 @@ import VisualPlaceholder from "@/components/VisualPlaceholder";
 import { iconMap } from "@/components/icon-map";
 import { seoKeywords, site } from "@/data/site";
 import { stats, trustBenefits } from "@/data/services";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -131,9 +132,9 @@ export default function AboutPage() {
               </CTAButton>
               <CTAButton
                 href={site.whatsappHref}
-                variant="navy"
+                variant="whatsapp"
                 external
-                icon={<MessageCircle className="size-4" />}
+                icon={<FaWhatsapp className="size-4" />}
               >
                 WhatsApp
               </CTAButton>

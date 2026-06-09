@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { BriefcaseBusiness, MessageCircle, Phone } from "lucide-react";
+import { BriefcaseBusiness, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { site } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 export default function MobileStickyCTA() {
   return (
@@ -13,7 +15,8 @@ export default function MobileStickyCTA() {
         <ActionLink
           href={site.whatsappHref}
           label="WhatsApp"
-          icon={<MessageCircle className="size-5" />}
+          icon={<FaWhatsapp className="size-5" />}
+          variant="whatsapp"
           external
         />
         <ActionLink
@@ -30,15 +33,21 @@ function ActionLink({
   href,
   label,
   icon,
+  variant = "default",
   external,
 }: {
   href: string;
   label: string;
   icon: React.ReactNode;
+  variant?: "default" | "whatsapp";
   external?: boolean;
 }) {
-  const classes =
-    "flex min-h-12 flex-col items-center justify-center gap-1 rounded-md bg-brand-light text-xs font-black text-brand-navy transition active:translate-y-px";
+  const classes = cn(
+    "flex min-h-12 flex-col items-center justify-center gap-1 rounded-md text-xs font-black transition active:translate-y-px",
+    variant === "whatsapp"
+      ? "bg-brand-whatsapp text-white shadow-lg shadow-brand-whatsapp/20"
+      : "bg-brand-light text-brand-navy",
+  );
 
   if (external) {
     return (

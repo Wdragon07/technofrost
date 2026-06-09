@@ -1,21 +1,79 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {
   CalendarCheck,
   MapPin,
-  MessageCircle,
   Phone,
   Search,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BrandDropdown from "./BrandDropdown";
 import { navLinks, site } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 const secondaryLinks = [
   { label: "Spare Parts", href: "/services#spare-parts" },
   { label: "Repairs & Services", href: "/services" },
 ];
+
+const navActionVariants = {
+  whatsapp: {
+    button: "bg-brand-whatsapp shadow-brand-whatsapp/20 hover:bg-brand-whatsapp-dark",
+    icon: "bg-brand-whatsapp-dark group-active/nav-action:bg-[#0f766e]",
+  },
+  red: {
+    button: "bg-brand-red shadow-brand-red/15 hover:bg-brand-red-dark",
+    icon: "bg-brand-red-dark group-active/nav-action:bg-[#a7061a]",
+  },
+};
+
+type NavActionLinkProps = {
+  href: string;
+  children: ReactNode;
+  icon: ReactNode;
+  variant: keyof typeof navActionVariants;
+  external?: boolean;
+};
+
+function NavActionLink({
+  href,
+  children,
+  icon,
+  variant,
+  external,
+}: NavActionLinkProps) {
+  const colors = navActionVariants[variant];
+
+  return (
+    <Link
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className={cn(
+        "group/nav-action relative isolate inline-flex min-h-11 items-center justify-center overflow-hidden rounded-md py-2.5 pl-4 pr-13 text-sm font-bold text-white! shadow-lg transition-[background-color,box-shadow,transform] duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-ice/50 active:translate-y-px",
+        colors.button,
+      )}
+    >
+      <span className="relative z-10 whitespace-nowrap text-white! transition-opacity duration-300 ease-in-out group-hover/nav-action:opacity-0 group-focus-visible/nav-action:opacity-0">
+        {children}
+      </span>
+      <span
+        className={cn(
+          "absolute inset-y-0 right-0 z-20 flex w-10 items-center justify-center text-white! transition-[width,background-color] duration-300 ease-in-out group-hover/nav-action:w-full group-focus-visible/nav-action:w-full",
+          colors.icon,
+        )}
+        aria-hidden="true"
+      >
+        <span className="grid size-5 place-items-center transition-transform duration-300 group-hover/nav-action:scale-110 group-focus-visible/nav-action:scale-110">
+          {icon}
+        </span>
+      </span>
+    </Link>
+  );
+}
 
 const NavBar = () => {
   return (
@@ -57,23 +115,22 @@ const NavBar = () => {
         </form>
 
         <div className="hidden items-center gap-3 text-brand-navy lg:flex">
-          <Link
+          <NavActionLink
             href={site.whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            className="flex min-h-11 items-center gap-2 rounded-md border border-brand-blue/15 px-3 text-sm font-bold transition hover:bg-brand-light"
+            variant="whatsapp"
+            external
+            icon={<FaWhatsapp className="size-5" />}
           >
-            <MessageCircle className="size-5" aria-hidden="true" />
             WhatsApp
-          </Link>
+          </NavActionLink>
 
-          <Link
+          <NavActionLink
             href="/contact"
-            className="flex min-h-11 items-center gap-2 rounded-md bg-brand-red-dark px-4 text-sm font-bold text-white shadow-lg shadow-brand-red/15 transition hover:bg-brand-red"
+            variant="red"
+            icon={<CalendarCheck className="size-5" />}
           >
-            <CalendarCheck className="size-5" aria-hidden="true" />
             Book Service
-          </Link>
+          </NavActionLink>
         </div>
       </section>
 

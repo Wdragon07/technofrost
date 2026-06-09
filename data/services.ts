@@ -4,8 +4,10 @@ export type IconName =
   | "washingMachine"
   | "cog"
   | "car"
+  | "calendarCheck"
   | "packageCheck"
   | "wrench"
+  | "showerHead"
   | "clock"
   | "shield"
   | "mapPin"
@@ -60,6 +62,7 @@ export const services: Service[] = [
     title: "A/C Installation & Service",
     mark: "AC",
     icon: "airVent",
+    image: "/images/services/ac-installation-service.webp",
     shortDescription: "Installation, servicing, cleaning, and cooling performance checks.",
     description:
       "Professional air conditioner installation, routine servicing, cleaning, and troubleshooting for homes, shops, offices, and small commercial spaces.",
@@ -75,6 +78,7 @@ export const services: Service[] = [
     title: "Deep Freezer Repair",
     mark: "DF",
     icon: "snowflake",
+    image: "/images/services/deep-freezer-repair.webp",
     shortDescription: "Cooling loss, compressor issues, gas checks, and inspection visits.",
     description:
       "Repair and inspection support for deep freezers used by homes, retailers, restaurants, and small businesses.",
@@ -90,6 +94,7 @@ export const services: Service[] = [
     title: "Refrigerator Repair",
     mark: "RF",
     icon: "refrigerator",
+    image: "/images/services/refrigerator-repair.webp",
     shortDescription: "Reliable refrigerator troubleshooting, repair, and maintenance.",
     description:
       "Support for common refrigerator issues including poor cooling, water leaks, noise, thermostat faults, and gas-related problems.",
@@ -105,6 +110,7 @@ export const services: Service[] = [
     title: "Washing Machine Repair",
     mark: "WM",
     icon: "washingMachine",
+    image: "/images/services/washing-machine-repair.webp",
     shortDescription: "Inspection and repair for washing, draining, spinning, and power issues.",
     description:
       "Washing machine service visits for home customers, including inspection of drainage, spinning, electrical, and mechanical faults.",
@@ -120,6 +126,7 @@ export const services: Service[] = [
     title: "Motor Rewinding",
     mark: "MR",
     icon: "cog",
+    image: "/images/services/motor-rewinding.webp",
     shortDescription: "Motor rewinding and technical repair support for selected appliances.",
     description:
       "Technical motor rewinding and related repair support for selected appliance and cooling system components.",
@@ -135,6 +142,7 @@ export const services: Service[] = [
     title: "Auto A/C Repair",
     mark: "AA",
     icon: "car",
+    image: "/images/services/auto-ac-repair.webp",
     shortDescription: "Vehicle A/C cooling checks, leak checks, and service support.",
     description:
       "Auto A/C inspection and service support for cooling performance, airflow, and common vehicle A/C faults.",
@@ -149,7 +157,8 @@ export const services: Service[] = [
     slug: "hot-water-shower-repair",
     title: "Hot Water Shower Repair",
     mark: "HW",
-    icon: "wrench",
+    icon: "showerHead",
+    image: "/images/services/hot-water-shower-repair.webp",
     shortDescription: "Installation, re-installation, parts replacement, and repair support.",
     description:
       "Service support for hot water shower installation, dismantling and re-installation, parts replacement, and related repair needs.",
@@ -165,6 +174,7 @@ export const services: Service[] = [
     title: "Spare Parts",
     mark: "SP",
     icon: "packageCheck",
+    image: "/images/services/spare-parts.webp",
     shortDescription: "Selected appliance and cooling spare parts with service guidance.",
     description:
       "Spare part guidance and selected replacement support for cooling, refrigeration, and appliance service work.",

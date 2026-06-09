@@ -6,7 +6,8 @@ import ServiceCard from "@/components/ServiceCard";
 import { iconMap } from "@/components/icon-map";
 import { seoKeywords, site } from "@/data/site";
 import { faqs, serviceDeals, services } from "@/data/services";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -110,9 +111,9 @@ export default function ServicesPage() {
               </CTAButton>
               <CTAButton
                 href={site.whatsappHref}
-                variant="ice"
+                variant="whatsapp"
                 external
-                icon={<MessageCircle className="size-4" />}
+                icon={<FaWhatsapp className="size-4" />}
               >
                 WhatsApp
               </CTAButton>

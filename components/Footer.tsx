@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import CTAButton from "@/components/CTAButton";
 import { navLinks, site } from "@/data/site";
 import { services } from "@/data/services";
@@ -35,14 +36,6 @@ export default function Footer() {
             </span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-brand-muted">{site.description}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <CTAButton href={site.primaryPhoneHref} variant="red" className="px-4">
-              Call Now
-            </CTAButton>
-            <CTAButton href={site.whatsappHref} variant="ice" external className="px-4">
-              WhatsApp
-            </CTAButton>
-          </div>
         </div>
 
         <FooterColumn title="Company">
@@ -87,7 +80,7 @@ export default function Footer() {
               Call Now
             </FooterLink>
             <FooterLink href={site.whatsappHref} external>
-              <MessageCircle className="size-4" aria-hidden="true" />
+              <FaWhatsapp className="size-4 text-brand-whatsapp" aria-hidden="true" />
               WhatsApp
             </FooterLink>
             <FooterLink href={site.directionsHref} external>

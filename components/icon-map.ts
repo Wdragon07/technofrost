@@ -2,6 +2,7 @@ import {
   AirVent,
   BadgeCheck,
   Building2,
+  CalendarCheck,
   Car,
   ClipboardCheck,
   Clock3,
@@ -9,30 +10,36 @@ import {
   Gauge,
   Mail,
   MapPin,
-  MessageCircle,
   Navigation,
   PackageCheck,
   Phone,
   Refrigerator,
   SearchCheck,
   ShieldCheck,
+  ShowerHead,
   Snowflake,
   Sparkles,
   Truck,
   WashingMachine,
   Wrench,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 import type { IconName } from "@/data/services";
 
-export const iconMap: Record<IconName, LucideIcon> = {
+type IconComponent = LucideIcon | IconType;
+
+export const iconMap: Record<IconName, IconComponent> = {
   airVent: AirVent,
   refrigerator: Refrigerator,
   washingMachine: WashingMachine,
   cog: Cog,
   car: Car,
+  calendarCheck: CalendarCheck,
   packageCheck: PackageCheck,
   wrench: Wrench,
+  showerHead: ShowerHead,
   clock: Clock3,
   shield: ShieldCheck,
   mapPin: MapPin,
@@ -45,7 +52,7 @@ export const iconMap: Record<IconName, LucideIcon> = {
   truck: Truck,
   gauge: Gauge,
   phone: Phone,
-  message: MessageCircle,
+  message: FaWhatsapp,
   mail: Mail,
   navigation: Navigation,
 };
