@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
-import Preloader from "@/components/Preloader";
 import Footer from "@/components/Footer";
 import NavBar from "../components/NavBar";
 import "./globals.css";
@@ -32,6 +31,11 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   creator: site.name,
   publisher: site.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: "/",
   },
@@ -54,7 +58,14 @@ export const metadata: Metadata = {
     locale: "en_LK",
     type: "website",
     url: "/",
-    images: [{ url: socialImage, alt: "TECHNOFROST cooling and appliance services" }],
+    images: [
+      {
+        url: socialImage,
+        width: 1774,
+        height: 887,
+        alt: "TECHNOFROST cooling and appliance services in Kalpitiya",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -62,6 +73,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: [socialImage],
   },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -84,7 +98,6 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-white text-slate-950">
         <StructuredData data={[localBusinessSchema, websiteSchema]} />
-        <Preloader />
         <NavBar />
         <ReactLenis root>
           {children}

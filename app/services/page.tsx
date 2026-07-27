@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ArrowDown } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import FinalCTA from "@/components/FinalCTA";
@@ -14,25 +13,16 @@ import {
 import { seoKeywords, site } from "@/data/site";
 import { faqs, services } from "@/data/services";
 import StructuredData from "@/components/StructuredData";
-import { siteUrl, socialImage } from "@/lib/seo";
+import { createBreadcrumbSchema, createPageMetadata, siteUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata = createPageMetadata({
+  title: "A/C & Appliance Repair Services in Kalpitiya",
   description:
-    "Explore TECHNOFROST A/C installation, refrigerator repair, deep freezer repair, washing machine repair, hot water shower repair, and spare parts services.",
+    "Explore TECHNOFROST A/C installation and service, refrigerator, deep freezer, washing machine and hot water shower repair in Kalpitiya.",
   keywords: seoKeywords,
-  alternates: { canonical: "/services" },
-  openGraph: {
-    title: "TECHNOFROST Services",
-    description:
-      "A/C, refrigeration, washing machine, hot water shower, and spare parts service support in Kalpitiya.",
-    siteName: "TECHNOFROST",
-    locale: "en_LK",
-    type: "website",
-    url: "/services",
-    images: [{ url: socialImage, alt: "TECHNOFROST repair and maintenance services" }],
-  },
-};
+  path: "/services",
+  imageAlt: "TECHNOFROST A/C and appliance repair services in Kalpitiya",
+});
 
 const servicesSchema = {
   "@context": "https://schema.org",
@@ -41,10 +31,15 @@ const servicesSchema = {
   itemListElement: services.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `${siteUrl}/services#${service.slug}`,
+    url: `${siteUrl}${service.href}`,
     name: service.title,
   })),
 };
+
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+]);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -59,7 +54,7 @@ const faqSchema = {
 export default function ServicesPage() {
   return (
     <main className="bg-white text-brand-foreground">
-      <StructuredData data={[servicesSchema, faqSchema]} />
+      <StructuredData data={[servicesSchema, faqSchema, breadcrumbSchema]} />
       <PageHero
         currentPage="Services"
         eyebrow="Cooling & Appliance Services"

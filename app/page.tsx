@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { CheckCircle2, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import ContactMapSection from "@/components/ContactMapSection";
@@ -10,24 +9,16 @@ import { iconMap } from "@/components/icon-map";
 import { seoKeywords, site } from "@/data/site";
 import { processSteps, services } from "@/data/services";
 import Image from "next/image";
-import { socialImage } from "@/lib/seo";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "A/C, Refrigeration & Appliance Repair in Kalpitiya",
+export const metadata = createPageMetadata({
+  title: "A/C & Appliance Repair in Kalpitiya | TECHNOFROST",
   description:
-    "TECHNOFROST provides premium A/C service, refrigeration repair, washing machine repair, hot water shower repair, and spare parts support in Kalpitiya.",
+    "TECHNOFROST provides A/C installation and service, refrigerator, freezer and washing machine repair, hot water shower repair, and spare parts in Kalpitiya.",
   keywords: seoKeywords,
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "TECHNOFROST | A/C, Refrigeration & Appliance Repair in Kalpitiya",
-    description: site.description,
-    siteName: "TECHNOFROST",
-    locale: "en_LK",
-    type: "website",
-    url: "/",
-    images: [{ url: socialImage, alt: "TECHNOFROST cooling and appliance services" }],
-  },
-};
+  path: "/",
+  imageAlt: "TECHNOFROST cooling, refrigeration, and appliance services in Kalpitiya",
+});
 
 export default function Home() {
   return (

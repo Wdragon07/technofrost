@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function FloatingWhatsAppButton() {
   const pathname = usePathname();
-  const internalPage = pathname === "/services" || pathname === "/contact";
+  const internalPage = pathname.startsWith("/services") || pathname === "/contact";
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const visible = !internalPage || scrolledPastHero;
 
