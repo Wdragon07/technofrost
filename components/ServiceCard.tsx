@@ -18,7 +18,7 @@ export default function ServiceCard({ service, compact, className }: ServiceCard
   if (compact) {
     return (
       <Link
-        href={`/services#${service.slug}`}
+        href={service.href}
         className={cn(
           "group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_10px_30px_rgba(4,20,43,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(4,20,43,0.12)] hover:ring-1 hover:ring-brand-blue/28 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-ice/60",
           className,
@@ -48,7 +48,7 @@ export default function ServiceCard({ service, compact, className }: ServiceCard
             {service.shortDescription}
           </p>
           <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-bold text-brand-blue">
-            More details
+            View {service.title}
             <ArrowRight
               className="size-4 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1"
               aria-hidden="true"
@@ -84,6 +84,14 @@ export default function ServiceCard({ service, compact, className }: ServiceCard
           </li>
         ))}
       </ul>
+
+      <Link
+        href={service.href}
+        className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full font-bold text-brand-blue transition-colors hover:text-brand-navy focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-ice/60"
+      >
+        View {service.title}
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </Link>
     </article>
   );
 }

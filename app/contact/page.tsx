@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { CalendarDays, Camera, CheckCircle2, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import ContactCard from "@/components/ContactCard";
@@ -8,29 +7,28 @@ import FinalCTA from "@/components/FinalCTA";
 import PageHero from "@/components/PageHero";
 import MapPreview from "@/components/MapPreview";
 import SectionHeader from "@/components/SectionHeader";
+import StructuredData from "@/components/StructuredData";
 import { seoKeywords, site } from "@/data/site";
-import { socialImage } from "@/lib/seo";
+import { createBreadcrumbSchema, createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata = createPageMetadata({
+  title: "Contact A/C & Appliance Repair in Kalpitiya",
   description:
-    "Contact TECHNOFROST in Kalpitiya for A/C service, refrigeration repair, appliance repair, hot water shower repair, and spare-part enquiries.",
+    "Call, WhatsApp, email, or visit TECHNOFROST in Kalpitiya for A/C, refrigeration, washing machine, hot water shower, and spare-parts support.",
   keywords: seoKeywords,
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact TECHNOFROST",
-    description: "Call, WhatsApp, or submit a service request to TECHNOFROST in Kalpitiya.",
-    siteName: "TECHNOFROST",
-    locale: "en_LK",
-    type: "website",
-    url: "/contact",
-    images: [{ url: socialImage, alt: "Contact TECHNOFROST in Kalpitiya" }],
-  },
-};
+  path: "/contact",
+  imageAlt: "Contact TECHNOFROST in Kalpitiya",
+});
+
+const breadcrumbSchema = createBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
 
 export default function ContactPage() {
   return (
     <main className="bg-white text-brand-foreground">
+      <StructuredData data={breadcrumbSchema} />
       <PageHero
         currentPage="Contact"
         eyebrow="Contact & Service Support"

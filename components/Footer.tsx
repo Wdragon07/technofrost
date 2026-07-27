@@ -28,7 +28,6 @@ export default function Footer() {
             alt="TECHNOFROST logo"
             width={64}
             height={64}
-            priority
             className="size-12 rounded-lg object-contain sm:size-14"
           />
           <span className="hidden text-2xl font-extrabold tracking-normal text-white sm:inline lg:text-4xl uppercase font-bebas-neue">
@@ -48,7 +47,7 @@ export default function Footer() {
 
         <FooterColumn title="Services">
           {footerServices.map((service) => (
-            <FooterLink key={service.slug} href={`/services#${service.slug}`}>
+            <FooterLink key={service.slug} href={service.href}>
               {service.title}
             </FooterLink>
           ))}
