@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { site } from "@/data/site";
 
-const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://technofrozt.vercel.app";
-
-export const siteUrl = configuredUrl.replace(/\/$/, "");
+export const siteUrl = "https://www.technofrost.store";
 export const socialImage = "/images/technofrost-hero-desktop.webp";
 export const lastContentUpdate = "2026-07-27";
 
